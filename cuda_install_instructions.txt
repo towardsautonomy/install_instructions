@@ -1,0 +1,15 @@
+1. Download CUDA from here https://developer.nvidia.com/cuda-downloads
+2. Remove any other installation (sudo apt-get purge nvidia-cuda* - if you want to install the drivers too, then sudo apt-get purge nvidia-*.)
+  a. If you want to install the display drivers(*), logout from your GUI. Go to a terminal session (ctrl+alt+F2)
+  b. Stop lightdm: sudo service lightdm stop
+  c. Create a file at /etc/modprobe.d/blacklist-nouveau.conf with the following contents:
+        blacklist nouveau
+        options nouveau modeset=0
+  d. Then do: sudo update-initramfs -u
+3. sudo sh cuda_10.0.130_410.48_linux.run --override. Make sure that you say y for the symbolic link.
+4. Follow the command-line prompts
+5. Reboot: sudo reboot
+6. Add cuda path to /etc/environment
+  a. sudo nano /etc/environment
+  b. Add this to the end: :/usr/local/cuda-10.0/bin
+  c. source /etc/environment

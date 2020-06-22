@@ -1,0 +1,25 @@
+## TurtleBot3 Commands
+
+# Environment variables
+source /opt/ros/kinetic/setup.bash
+source ~/catkin_ws/devel/setup.bash
+export TURTLEBOT3_MODEL=burger
+
+# Launch turtlebot_gazebo
+roslaunch turtlebot3_gazebo turtlebot3_world.launch
+
+# Visualize turtlebot in rviz
+roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
+
+# Move turtlebot using keyboard
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+## Relevant topics
+# Laser scans
+topic: scan; msg_type: sensor_msgs -> LaserScan
+
+# Linear and Angular Velocity Commands
+topic: /cmd_vel; msg_type: geometry_msgs -> Twist
+
+# Current pose
+topic: /odom; msg_type: nav_msgs/Odometry
